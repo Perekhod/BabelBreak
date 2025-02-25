@@ -1,8 +1,67 @@
 import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
 
 Window {
-    width: 1100
-    height: 700
+    width: 900
+    height: 600
     visible: true
-    title: qsTr("Babel Break v.0.1 - 25.02.2025")
+    title: "BabelBreak - Главное меню"
+
+    // Основной контейнер для навигации
+    StackView {
+        id: stackView
+        initialItem: mainPage // Стартовая страница
+        anchors.fill: parent
+    }
+
+    // Компонент главной страницы
+    Component {
+        id: mainPage
+
+        Rectangle {
+            color: "transparent"
+
+            Row {
+                anchors.centerIn: parent
+                spacing: 1
+
+                Image {
+                    source: "Images/TextChat.jpg"
+                    width: 300
+                    height: 500
+                    fillMode: Image.PreserveAspectFit
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: stackView.push("TextTranslationWindow.qml")
+                    }
+                }
+
+                Image {
+                    source: "Images/TranslateVideos.jpg"
+                    width: 300
+                    height: 500
+                    fillMode: Image.PreserveAspectFit
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: { /* Аналогично для других окон */ }
+                    }
+                }
+
+                Image {
+                    source: "Images/VoiceChat.jpg"
+                    width: 300
+                    height: 500
+                    fillMode: Image.PreserveAspectFit
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: { /* Аналогично для других окон */ }
+                    }
+                }
+            }
+        }
+    }
 }
